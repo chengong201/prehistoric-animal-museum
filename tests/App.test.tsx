@@ -1157,10 +1157,10 @@ describe('App', () => {
     await user.click(within(dialog).getByText('剑龙研究资料'))
     expect(researchDisclosure).toHaveAttribute('open')
     expect(
-      within(dialog).getByText(/剑龙属于剑龙类恐龙。已知化石年代为晚侏罗世/),
+      within(dialog).getByText('剑龙生活在晚侏罗世，化石发现于北美洲西部。'),
     ).toBeVisible()
     expect(
-      within(dialog).getByText('化石证据与复原边界'),
+      within(dialog).getByText('从化石了解它'),
     ).toBeVisible()
     expect(
       within(dialog).getByText(
@@ -1254,10 +1254,10 @@ describe('App', () => {
     expect(dialog).toBeVisible()
     expect(
       within(dialog).getAllByRole('button', { name: /前往.+展台$/ }),
-    ).toHaveLength(24)
+    ).toHaveLength(36)
     expect(
       dialog.querySelectorAll('.collection-card__image img[loading="eager"]'),
-    ).toHaveLength(24)
+    ).toHaveLength(36)
     expect(
       within(dialog).getByRole('button', {
         name: '当前展台，前往剑龙展台',
@@ -1441,8 +1441,8 @@ describe('App', () => {
     expect(
       urls.slice(1, 3).every((url) => url.includes('pteranodon')),
     ).toBe(true)
-    expect(urls[3]).toContain('anomalocaris/model/model.glb')
-    expect(urls.slice(4).every((url) => url.includes('anomalocaris'))).toBe(true)
+    expect(urls[3]).toContain('xiphactinus/model/model.glb')
+    expect(urls.slice(4).every((url) => url.includes('xiphactinus'))).toBe(true)
     for (const [, init] of fetchMock.mock.calls) {
       expect(init).toMatchObject({ priority: 'low' })
     }
@@ -1524,7 +1524,7 @@ describe('App', () => {
         '.animal-rail .thumbnail-frame img',
       ),
     )
-    expect(thumbnails).toHaveLength(24)
+    expect(thumbnails).toHaveLength(36)
     expect(thumbnails.filter((image) => image.hasAttribute('src'))).toHaveLength(
       1,
     )
@@ -1605,7 +1605,7 @@ describe('App', () => {
       expect(urls.slice(0, 3).every((url) => url.includes('pteranodon'))).toBe(
         true,
       )
-      expect(urls[3]).toContain('anomalocaris/model/model.glb')
+      expect(urls[3]).toContain('xiphactinus/model/model.glb')
     } finally {
       if (originalVisibilityState) {
         Object.defineProperty(
